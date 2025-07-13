@@ -11,7 +11,7 @@ function NormalNestedObject() {
         ...nested.user,
         profile: {
           ...nested.user.profile,
-          avatar: 'avatar2.jpg'
+          avatar: `avatar${Math.floor(Math.random() * 10) + 1}.jpg`
         }
       }
     });
@@ -47,7 +47,7 @@ setNested({
     ...nested.user,
     profile: {
       ...nested.user.profile,
-      avatar: 'avatar2.jpg'
+      avatar: 'avatarX.jpg
     }
   }
 });`}

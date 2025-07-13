@@ -7,7 +7,7 @@ function Counter() {
   const subscriberCount = getSubscriberCount(countAtom);
   const dependencies = getDependencies(countAtom);
   
-  console.log('Counter rendered with count:', count);
+  console.log('🟦 Counter 컴포넌트 렌더링됨 - count:', count);
   
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>

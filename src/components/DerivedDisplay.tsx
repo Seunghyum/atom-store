@@ -6,7 +6,7 @@ function DerivedDisplay() {
   const greeting = useAtomValue(greetingAtom);
   const complex = useAtomValue(complexAtom);
   
-  console.log('DerivedDisplay rendered');
+  console.log('🟧 DerivedDisplay 컴포넌트 렌더링됨 - doubleCount:', doubleCount, 'greeting:', greeting);
   
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>

@@ -13,6 +13,7 @@
     "test:comparison": "jest src/tests/comparison.test.ts",
     "test:advanced": "jest src/tests/atom.test.ts",
     "test:useAtomBatch": "jest src/tests/useAtom-batch.test.ts",
+    "test:independentRendering": "jest src/tests/independent-rendering.test.ts",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },

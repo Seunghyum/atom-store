@@ -70,6 +70,14 @@ export function useAtomValue<T>(atom: Atom<T>): T {
  * @returns setter 함수
  */
 export function useSetAtom<T>(atom: Atom<T>): (value: T) => void {
-  const [, setValue] = useAtom(atom);
+  // useAtom 대신 직접 setter 함수만 생성하여 중복 구독 방지
+  const setValue = (newValue: T) => {
+    if (atom._isDerived) {
+      throw new Error('Cannot set value on derived atom');
+    }
+    // useAtom의 setValue는 자동 배치 처리 활성화
+    set(atom, newValue, true);
+  };
+
   return setValue;
 } 

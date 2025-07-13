@@ -8,6 +8,11 @@ import {
 export const countAtom = createAtom(0);
 export const nameAtom = createAtom('World');
 
+// 독립적인 counter atoms (서로 의존성 없음)
+export const counter1Atom = createAtom(0);
+export const counter2Atom = createAtom(0);
+export const counter3Atom = createAtom(0);
+
 // 파생 atoms 생성
 export const doubleCountAtom = createDerivedAtom((get) => get(countAtom) * 2);
 export const greetingAtom = createDerivedAtom((get) => `Hello, ${get(nameAtom)}!`);
