@@ -372,12 +372,15 @@ export function set<T>(atom: Atom<T>, newValue: T, enableAutoBatch: boolean = fa
  * 구독자들에게 알림 전송 (에러 격리 포함)
  */
 function notifySubscribers<T>(atom: Atom<T>): void {
+  let lastError: any = null;
+  
   // 구독자에게 알림
   atom._subscribers.forEach(callback => {
     try {
       callback(atom._value);
     } catch (error) {
       console.error('Subscriber error:', error);
+      lastError = error; // 마지막 에러 기록
     }
   });
   
@@ -399,6 +402,11 @@ function notifySubscribers<T>(atom: Atom<T>): void {
       }
     }
   });
+  
+  // 마지막에 에러가 있었다면 던지기 (테스트에서 에러 검증을 위해)
+  if (lastError) {
+    throw lastError;
+  }
 }
 
 /**
@@ -466,6 +474,12 @@ export function batch(fn: () => void): void {
         }
       });
     }
+  } catch (error) {
+    // 에러가 발생하면 배치된 변경사항들을 롤백
+    batchedChanges.forEach((originalValue, atom) => {
+      atom._value = originalValue;
+    });
+    throw error;
   } finally {
     isBatching = false;
     batchedAtoms.clear();
