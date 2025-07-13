@@ -15,10 +15,17 @@
 - ✅ **에러 처리**
 - ✅ **성능 최적화**
 
-## 설치
+## 동작 확인
 
 ```bash
-npm install medistream-atom
+# 패키지 설치
+yarn
+
+# 실행
+yarn dev
+
+# 테스트 확인
+yarn test
 ```
 
 ## 기본 사용법
@@ -288,7 +295,7 @@ npm run test:coverage
 - **수동 배치**: 3번의 업데이트 → 1번의 리렌더링
 - **자동 배치**: 3번의 업데이트 → 1번의 리렌더링 (다음 틱)
 
-테스트 결과: **총 51개 테스트 통과 (100% 성공율)**
+테스트 결과: **총 71개 테스트 통과 (100% 성공율)**
 
 ## 최근 개선사항
 
@@ -340,27 +347,12 @@ npm run test:coverage
 - `getSubscriberCount<T>(atom: Atom<T>): number` - 구독자 수 확인
 - `getDependencies<T>(atom: Atom<T>): { dependencies: number; dependents: number }` - 의존성 정보
 
-## 라이선스
 
-MIT License
+## 기타 설명
 
-## 기여하기
+- 이 프로젝트는 Cursor 에디터, clude-4-sonet API 모델을 사용해서 만들었습니다.
+- 프롬프트 질문은 과제를 정리해 입력했습니다. 예외 테스트 케이스들을 만들며 발생하는 버그를 잡아가며 작업했습니다.
+- 일반 Atom 객체로 만드는 방법과 Proxy를 응용해서 만드는 방법이 있을 것 같아 2가지 방법으로 각각 만들어보고 성능을 측정하는 형식으로 비교해 보았습니다.
+- react browser devtool > Components 탭으로 별도의 상태관리 중인 컴포넌트들이 리랜더링이 발생하는 것처럼 보이는 현상이 있었으나 컴포넌트에 로그를 넣어 실제 리렌더링 되는지 확인해보았습니다. 실제로는 독립적인 컴포넌트가 리렌더링 하지 않고 있는 현상이 있습니다. 원인은 파악하지 못했습니다.
 
-1. 이 저장소를 포크하세요
-2. 새로운 기능 브랜치를 생성하세요 (`git checkout -b feature/amazing-feature`)
-3. 변경사항을 커밋하세요 (`git commit -m 'Add some amazing feature'`)
-4. 브랜치에 푸시하세요 (`git push origin feature/amazing-feature`)
-5. Pull Request를 생성하세요
 
-## 사용 사례
-
-이 라이브러리는 다음과 같은 프로젝트에 적합합니다:
-
-- ✅ **중소규모 React 애플리케이션**
-- ✅ **성능이 중요한 실시간 애플리케이션**
-- ✅ **복잡한 상태 의존성이 있는 프로젝트**
-- ✅ **메모리 사용량을 최소화해야 하는 환경**
-- ✅ **타입 안전성이 중요한 TypeScript 프로젝트**
-- ✅ **프로토타입 및 실험적 프로젝트**
-
-대규모 엔터프라이즈 애플리케이션에서는 Redux Toolkit, Zustand, Jotai와 같은 검증된 라이브러리를 고려해보세요.
